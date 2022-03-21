@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculadora</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			background: linear-gradient(45deg,black,crimson);
+			height: 100vh;
+			color: #fff;
+			font-family: arial;
+			text-align: center;
+			margin: auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.calculadora {
+			background: rgba(0, 0, 0, .8);
+			padding: 15px;
+			border-radius: 15px;
+		}
+
+		.btn {
+			width: 50px;
+			margin: 3px;
+			height: 50px;
+			font-size: 25px;
+			cursor: pointer;
+			background: rgb(31, 31, 31);
+			border: none;
+			color: #fff;
+		}
+
+		.btn:hover {
+			background: #000;
+		}
+
+		#resultado {
+			text-align: right;
+			padding: 5px;
+			color: #000;
+			font-size: 25px;
+			margin: 5px;
+			height: 30px;
+			width: calc(100% - 18px);
+			background: #fff;
+		}
+.footer {
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+	align-items: center;
+
+	font-size: 26px;
+	color: #fff;
+	margin: 1em 0 0 0;
+	padding: 20px;
+	text-align: center;
+}
+
+.redes-container ul {
+    display: flex;
+}
+
+.redes-container ul li {
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    list-style: none;
+}
+
+.redes-container ul li a {
+    display: block;
+    padding: 0 10px;
+    color: #fff;
+    line-height: 50px;
+    font-size: 18px;
+    box-shadow: 0 3px 5px 0px rgba(0, 0, 0, .2);
+    transition: .2s;
+}
+
+.instagram {
+       background-color: #e4405f;
+}
+
+.github {
+    background-color: #000;
+}
+
+.linkedin {
+    background-color: #0077b5;
+}
+
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="calculadora">
+			<h1>Calculadora</h1>
+			<p id="resultado"></p>
+			<table>
+				<tr>
+					<td><button class="btn" onclick="clean()">C</button></td>
+					<td><button	class="btn" onclick="back()"><</button></td>
+					<td><button	class="btn" onclick="insert('/')">/</button></td>
+					<td><button	class="btn" onclick="insert('*')">*</button></td>
+				</tr>
+				<tr>
+					<td><button	class="btn" onclick="insert('7')">7</button></td>
+					<td><button	class="btn" onclick="insert('8')">8</button></td>
+					<td><button	class="btn" onclick="insert('9')">9</button></td>
+					<td><button	class="btn" onclick="insert('-')">-</button></td>
+				</tr>
+				<tr>
+					<td><button	class="btn" onclick="insert('4')">4</button></td>
+					<td><button	class="btn" onclick="insert('5')">5</button></td>
+					<td><button	class="btn" onclick="insert('6')">6</button></td>
+					<td><button	class="btn" onclick="insert('+')">+</button></td>
+				</tr>
+				<tr>
+					<td><button	class="btn" onclick="insert('1')">1</button></td>
+					<td><button	class="btn" onclick="insert('2')">2</button></td>
+					<td><button	class="btn" onclick="insert('3')">3</button></td>
+					<td rowspan="2"><button class="btn" style="height: 106px" onclick="calcular()">=</button></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button onclick="insert('0')" class="btn" style="width: 106px;">0</button></td>
+					<td><button	class="btn" onclick="insert('.')">.</button></td>
+				</tr>
+			</table>
+
+
+		</div>
+		<div class="footer">
+			<p>Página creada por Wilker Vivas</p>
+
+		<div class="contact__box">
+			<p>Contactos:</p>
+		<div class="redes-container">
+			<ul>
+				<li>
+					<a href="https://www.instagram.com/wilker31vivas/" class="instagram"><i class="fab fa-instagram"></i></a>
+				</li>
+				<li>
+					<a href="https://github.com/wilker31vivas" class="github"><i class="fab fa-github icon2"></i></a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/wilker-vivas-531965234/" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+				</li>
+			</ul>	
+		</div>
+		</div>
+		</div>
+	
+	</div>
+	<script src="https://kit.fontawesome.com/be76d00220.js" crossorigin="anonymous"></script>
+	<script>
+		function insert(num) 
+		{
+			var numero = document.getElementById('resultado').innerHTML;
+			document.getElementById('resultado').innerHTML = numero + num;
+		}
+		function clean(){
+			document.getElementById('resultado').innerHTML = "";
+		}
+		function back()
+		{
+			var resultado = document.getElementById('resultado').innerHTML;
+			document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1)
+		}
+		function calcular(){
+			var resultado = document.getElementById('resultado').innerHTML; 
+			if(resultado){
+				document.getElementById('resultado').innerHTML = eval(resultado)
+			}
+		}
+	</script>
+</body>
+</html>
